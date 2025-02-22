@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encrypt Files</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Encrypt Files</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="files">Select text files to encrypt:</label>
+                <input type="file" id="files" name="files" accept=".txt,.md,.py" multiple required>
+            </div>
+            <button type="submit" class="btn">Encrypt</button>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</body>
+</html>

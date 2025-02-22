@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption Success</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style>
+        .result-container {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            background-color: #f8fafc;
+            box-shadow: var(--box-shadow);
+            border: 1px solid #eaeef2;
+        }
+
+        .image-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+        }
+
+        .result-image {
+            width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+            pointer-events: none;
+        }
+
+        @media (max-width: 850px) {
+            .result-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Encryption Successful</h1>
+        <p>Your files have been encrypted successfully.</p>
+        <p>PDF containing encrypted images: <a href="{{ url_for('static', filename='encrypted_images.pdf') }}">Download PDF</a></p>
+        <p>Your file has been encrypted successfully.</p>
+        <div class="result-container">
+            <p class="text-center">File name: {{ filename }}</p>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='enimg/' + filename) }}" 
+                     alt="Encrypted Image" 
+                     class="result-image">
+            </div>
+            
+        </div>
+        <div class="action-buttons">
+            <a href="{{ url_for('encrypt') }}" class="btn">Encrypt Another File</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

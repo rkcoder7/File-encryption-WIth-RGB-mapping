@@ -1,0 +1,1 @@
+It used to encrypt or decrypt a file by using pixel formation in RGB mapping
